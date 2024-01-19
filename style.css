@@ -1,0 +1,981 @@
+/* 
+1. Posicionamiento --> static, absolute, relative. fixed
+2. Modelo caja (Box model) --> margin, border, padding, content
+3. Tipografia (Fuentes, tamaño de fuentes, ...)
+4. Visuales (Shadow-box, border-radius,...)
+5. Otros (reglas CSS y más)
+*/
+
+:root {
+    /* Colores */
+    --bitcoin-orange: #f7931a;
+    --soft-orange: #ffe9d5;
+    --secondary-blue: #1a9af7;
+    --soft-blue: #e7f5ff;
+    --warm-black: #282623;
+    --black: #201E1C;
+    --grey: #bababa;
+    --off-white: #faf8f7;
+    --just-white: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* 1rem = 10px */
+    font-size: 62.5%;
+    font-family: 'DM Sans', sans-serif;
+}
+
+header {
+    position: relative;
+    display: flex;
+    /* VOLVER A ESCUCHAR LA CLASE, HACE QUE CADA SECCION BAJE AL PARECER */
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-width: 320px;
+    height: 334px;
+    text-align: center;
+
+    /* Aqui se debe agregar el background */
+    /* background: linear-gradient(207.8deg, #201E1C 16.69%, #F7931A 100%); */
+    background: linear-gradient(207.8deg, var(--black) 16.69%, var(--bitcoin-orange) 100%);
+}
+
+header figure {
+    width: 150px;
+    height: 24px;
+    margin-top: 60px;
+    /* Como utilizamos flex, es la forma de poder centrar a un elemento, que tenga un contenedor con display flex */
+    align-self: center;
+}
+
+.header--title-container {
+    width: 90%;
+    min-width: 288px;
+    max-width: 900px;
+    height: 218px;
+    margin-top: 40px;
+    /* Como utilizamos flex, es la forma de poder centrar a un elemento, que tenga un contenedor con display flex */
+    align-self: center;
+}
+
+.header--title-container h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    /* Es una dimension de altura, controla el espaciado entre lineas */
+    line-height: 2.6rem;
+    color: var(--just-white);
+}
+
+.header--title-container p {
+    margin-top: 25px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    color: var(--soft-orange);
+}
+
+.header--title-container .header--button {
+    /* Me permite moverme arriba, abajo, izquierda, derecha desde el borde de la pantalla */
+    position: absolute;
+
+    /* El calc es 50% - la mitad del ancho del elemento a centrar */
+    /* left: calc(50% - 229/xpx); */
+    left: calc(50% - 114.5px);
+
+    /* Otra forma de hacerlo */
+    /* left: 0;
+    right: 0;
+    margin: 0 auto; */
+
+
+    top: 270px;
+    display: block;
+    margin-top: 40px;
+    padding: 15px;
+    width: 229px;
+    height: 48px;
+    background-color: var(--off-white);
+    /* Sombra debajo del boton*/
+    box-shadow: 0px 4px 8px rgba(89, 73, 30, 0.16);
+
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: bold; /*700*/
+    text-decoration: none;
+    color: var(--black);
+}
+
+.header--button span {
+    display: inline-block;
+    width: 13px;
+    height: 8px;
+    margin-left: 10px;
+    background-image: url(./assets/icons/down-arrow.svg);
+}
+
+.currency__section {
+    /* aproximado */
+    height: 800px;
+
+    min-width: 320px;
+}
+
+.currency__section figure {
+    /* border: 1px blue solid; */
+    min-width: 320px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 195px;
+    top: 393px;
+}
+
+.main--title-container {
+    /* border: 1px blue solid; */
+    position: relative;
+    width: 100%;
+    height: 130px;
+    margin-top: 294px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    /* separacion entre columnas */
+    gap: 22px;
+}
+
+.main--title-container h2 {
+    width: 100%;
+    /* border: 1px green solid; */
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 2.6rem;
+    color: var(--warm-black);
+}
+
+.main--title-container p {
+    width: 100%;
+    /* border: green solid; */
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: #757575;
+}
+
+.main--exchange-table {
+    /* border:1px green solid; */
+    position: relative;
+    top: 48px;
+    /* 113px; */
+    width: 235px;
+    left: calc(50% - 98.5px);
+    height: 194px;
+    /* agregar una sombra */
+    /* direccion eje x - direccion para y - cantidad de transparencia - tamaño de la caja*/
+    box-shadow: -8px 4px 80px 4px var(--soft-orange) ;
+}
+
+.main--exchange-table h3 {
+    /* border: 1px blue solid; */
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 23.44px;
+    color: #FF9536;
+    margin-left: 12px;
+}
+
+.main--table-content{
+    margin-top: 8px;
+    height: calc(100% - 25.44px);
+    display: flex;    
+    direction: row;
+}
+
+.main--table-content .row-1,
+.main--table-content .row-2 {
+    /* border: #1a9af7 1px solid; */
+    width: 43%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.main--table-content .main--table-button {
+    width: 14%;
+}
+
+.row-1 div {
+    /* border: 1px blue solid; */
+    /* gap: 10px; */
+    /* width: 100%; */
+    height: 39px;
+    /* border-radius: 8px 0px 0px 0px; */
+    padding: 10px 12px 10px 12px;
+}
+
+.row-1 p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 19.36px;
+    letter-spacing: -2%;
+    color: #b5b0ac;
+}
+
+.row-2 div {
+    /* border: 1px blue solid; */
+    padding: 11px 12px 11px 12px;
+    height: 39px;
+}
+
+.row-2 p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 16.94px;
+    letter-spacing: -2%;
+    color: #757575;
+    margin-left:8px;
+}
+
+.row-2 img{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 76%;
+    margin-top: 2px;
+}
+
+.main--table-button {
+    margin: auto 0;
+    margin-left: 18px;
+}
+
+.main--updated-box {
+    /* border: blue solid 1px; */
+    width: 173px;
+    height: 31px;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding: 7px;
+    background-color: var(--soft-orange);
+    border-radius: 8px;
+}
+
+.main--updated-box p {
+    color: var(--warm-black);
+    font-size: 1.2rem;
+    line-height: 14.52px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* border: blue 1px solid; */
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* SEGUNDO CUADRO */
+
+
+.main--exchange-table-2 {
+    /* border:1px green solid; */
+    position: relative;
+    top: 48px;
+    /* 113px; */
+    width: 235px;
+    left: calc(50% - 98.5px);
+    height: 194px;
+    /* agregar una sombra */
+    /* direccion eje x - direccion para y - cantidad de transparencia - tamaño de la caja*/
+    box-shadow: -8px 4px 80px 4px var(--soft-orange) ;
+}
+
+.main--exchange-table-2 h3 {
+    /* border: 1px blue solid; */
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 23.44px;
+    color: var(--secondary-blue);
+    margin-left: 12px;
+}
+
+.main--table-content-2{
+    margin-top: 8px;
+    height: calc(100% - 25.44px);
+    display: flex;    
+    direction: row;
+}
+
+.main--table-content-2 .main--table-button-2 {
+    width: 14%;
+}
+
+.main--table-content-2 .row-1,
+.main--table-content-2 .row-2 {
+    margin-left: 30px;
+    /* border: #1a9af7 1px solid; */
+    width: 43%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.row-1 div {
+    /* border: 1px blue solid; */
+    /* gap: 10px; */
+    /* width: 100%; */
+    height: 39px;
+    /* border-radius: 8px 0px 0px 0px; */
+    padding: 10px 12px 10px 12px;
+}
+
+.row-1 p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 19.36px;
+    letter-spacing: -2%;
+    color: #b5b0ac;
+}
+
+.row-2 div {
+    /* border: 1px blue solid; */
+    padding: 11px 12px 11px 12px;
+    height: 39px;
+}
+
+.main--table-content-2 .row-2 p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 16.94px;
+    letter-spacing: -2%;
+    color: #757575;
+    text-align: center;
+}
+
+.row-2 img{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 76%;
+    margin-top: 2px;
+}
+
+.main--table-button-2 {
+    transform: rotate(180deg);
+    position: absolute;
+    margin-left: -7px;
+    bottom: 75px ;
+    left: 0;
+}
+
+.main--updated-box {
+    /* border: blue solid 1px; */
+    width: 173px;
+    height: 31px;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding: 7px;
+    background-color: var(--soft-orange);
+    border-radius: 8px;
+}
+
+.main--updated-box p {
+    color: var(--warm-black);
+    font-size: 1.2rem;
+    line-height: 14.52px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* border: blue 1px solid; */
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* TERMINO SEGUNDO CUADRO */
+
+.features {
+    font-family: 'DM Sans', sans-serif;
+    min-width: 320px;
+    height: 900px;
+    background-color: #201E1C;
+}
+
+.features__sticker {
+    /* border: blue solid; */
+    width: 40.57px;
+    height: 24.01px;
+    position: relative;
+    margin: 0 auto;
+    bottom: 12.5px;
+}
+
+.features__title {
+    /* border: blue solid; */
+    margin: 0 auto;
+
+
+    /* width: 100%; */
+    margin-top: 47px; 
+    /* padding-left: 12px;
+    padding-right: 12px; */
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.features__title h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+    color: var(--just-white);
+}
+
+.features__title p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    color: #808080;
+}
+
+.features__cards {
+    /* border: 1px blue solid; */
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+
+    width: 288px;
+}
+
+.features__cards section {
+    background-color: var(--warm-black);
+    box-shadow: 0px 4px 8px 0px #00000029;
+    border-radius: 4px;
+    height: 152px;
+
+    padding-top: 14px;
+    padding-left: 16px;
+    padding-right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.features__cards span {
+    height: 24px;
+    width: 24px;
+}
+
+.features__cards h3 {
+    color: var(--just-white);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: left;
+}
+
+.features__cards p {
+    color: #808080;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+}
+
+.calling {
+    /* border: blue solid; */
+    min-width: 320px;
+    width: 100%;
+    /* height: 390px; */
+    height: 60vh;
+    background-image: url("./assets/img/bitcoinbaby2x.png");
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.calling h2 {
+    padding-top: 64px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+
+    color: var(--just-white);
+}
+
+.plans {
+    min-width: 320px;
+    width: 100%;
+    height: 550px;
+}
+
+.plans__title {
+    /* border: blue solid; */
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 64px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+
+    font-family: 'DM Sans', sans-serif;
+}
+
+.plans__title h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+    color: #201E1C;
+}
+
+.plans__title p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+    color: #757575;
+}
+
+.plans__container--slider {
+    display: flex;
+    gap: 50px;
+    /* border: blue solid */
+    height: 316px;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+}
+
+.plans__recommended {
+    /* border: blue solid; */
+    background-color: var(--bitcoin-orange);
+    /* left: calc(50% - 101px); */
+    width: 101px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+
+    position: absolute;
+    left: calc(50% - 50.5px);
+    top: -16px;
+    /* margin: 0 auto;     */
+    /* left: 50px; */
+    /* top: 50px; */
+}
+
+.plans__recommended p {
+    color: var(--just-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: center;
+}
+
+.plans__card {
+    background-color: var(--just-white);
+
+    scroll-snap-align: center;
+    /* border: 2px solid #F7931A; */
+    box-shadow: 0px 4px 38px 14px #07070729;
+    /* box-shadow: 0px 4px 10px 10px #22222029; */
+
+    /* border: blue solid; */
+    width: 190px;
+    height: 247px;
+    border-radius: 8px;
+    margin: 0 auto;
+
+    /* IMPORTANTE PARA CENTRAR TAMBIEN BOTONES  */
+    text-align: center;
+
+    position: relative;
+    /* bottom: 15px; */
+    top: 50px;
+}
+
+.plans__card h2 {
+    padding-top: 31px;
+    text-align: center;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+}
+
+.plans__card--price{
+    /* border: blue solid; */
+    padding: 5px 0;
+    font-size: 5.2rem;
+    font-weight: 700;
+    line-height: 6.3rem;
+    color: black;
+    letter-spacing: -0.25rem;
+
+    position: relative;
+    bottom: 7px;
+    right: 8px;
+}
+
+.plans__card--price span {
+    font-size: 1.2rem;
+    font-weight: 300;
+    vertical-align: 25px;
+}
+
+.plans__card h3 {
+    font-family: 'Inter', sans-serif;
+    color: #757575;
+    font-size: 1.2rem;
+    width: 158px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+    margin: 0 auto;
+    position: relative;
+}
+
+.plan-card--ca {
+    border: blue solid;
+    width: 150px;
+    height: 48px;
+    margin-top: 20px;
+    background-color: #faf8f7;
+    border: 2px solid var(--bitcoin-orange);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    color: var(--black);
+
+}
+
+.plan-card--ca span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("./assets/icons/orange-right-arrow.svg");
+
+    /* PONER EL TEXTO PEGADO ABAJO */
+    vertical-align: text-bottom;
+}
+
+.plans__card__pro--recommended {
+    /* border: blue solid; */
+    background-color: green;
+    /* left: calc(50% - 101px); */
+    width: 101px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+
+    position: absolute;
+    left: calc(50% - 50.5px);
+    top: -16px;
+    /* margin: 0 auto;     */
+    /* left: 50px; */
+    /* top: 50px; */
+}
+
+.plans__card__pro--recommended p {
+    color: var(--just-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: center;
+}
+
+.plans__card__pro {
+    background-color: var(--just-white);
+    scroll-snap-align: center;
+
+    /* border: 2px solid #F7931A; */
+    box-shadow: 0px 4px 38px 14px #07070729;
+    /* box-shadow: 0px 4px 10px 10px #22222029; */
+
+    /* border: blue solid; */
+    width: 190px;
+    height: 247px;
+    border-radius: 8px;
+    margin: 0 auto;
+    /* margin-top: 40px; */
+
+
+    /* IMPORTANTE PARA CENTRAR TAMBIEN BOTONES  */
+    text-align: center;
+
+    position: relative;
+    /* bottom: 15px; */
+    top: 50px;
+}
+
+.plans__card__pro h2 {
+    padding-top: 31px;
+    text-align: center;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+}
+
+.plans__card__pro--price{
+    /* border: blue solid; */
+    padding: 5px 0;
+    font-size: 5.2rem;
+    font-weight: 700;
+    line-height: 6.3rem;
+    color: black;
+    letter-spacing: -0.25rem;
+
+    position: relative;
+    bottom: 7px;
+    right: 8px;
+}
+
+.plans__card__pro--price span {
+    font-size: 1.2rem;
+    font-weight: 300;
+    vertical-align: 25px;
+}
+
+.plans__card__pro h3 {
+    font-family: 'Inter', sans-serif;
+    color: #757575;
+    font-size: 1.2rem;
+    width: 158px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+    margin: 0 auto;
+    position: relative;
+}
+
+.plans__card__pro--ca {
+    border: blue solid;
+    width: 150px;
+    height: 48px;
+    margin-top: 20px;
+    background-color: #faf8f7;
+    border: 2px solid #008000;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    color: var(--black);
+
+}
+
+.plans__card__pro--ca span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("./assets/icons/orange-right-arrow.svg");
+    filter: invert(25%) sepia(99%) saturate(5086%) hue-rotate(118deg) brightness(93%) contrast(108%);
+
+    /* PONER EL TEXTO PEGADO ABAJO */
+    vertical-align: text-bottom;
+}
+
+.plans__card__free--recommended {
+    /* border: blue solid; */
+    background-color: #0000ff;
+    /* left: calc(50% - 101px); */
+    width: 101px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+
+    position: absolute;
+    left: calc(50% - 50.5px);
+    top: -16px;
+    /* margin: 0 auto;     */
+    /* left: 50px; */
+    /* top: 50px; */
+}
+
+.plans__card__free--recommended p {
+    color: var(--just-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: center;
+}
+
+.plans__card__free {
+    background-color: var(--just-white);
+    scroll-snap-align: center;
+
+    /* border: 2px solid #F7931A; */
+    box-shadow: 0px 4px 38px 14px #07070729;
+    /* box-shadow: 0px 4px 10px 10px #22222029; */
+
+    /* border: blue solid; */
+    width: 190px;
+    /* width: 90%; */
+    height: 247px;
+    border-radius: 8px;
+    /* margin: 0 auto; */
+    margin: 0 auto 0;
+    /* margin-top: 40px; */
+    /* padding: 0 15px; */
+
+
+    /* IMPORTANTE PARA CENTRAR TAMBIEN BOTONES  */
+    text-align: center;
+
+    position: relative;
+    /* bottom: 15px; */
+    top: 50px;
+}
+
+.plans__card__free h2 {
+    padding-top: 31px;
+    text-align: center;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+}
+
+.plans__card__free--price{
+    /* border: blue solid; */
+    padding: 5px 0;
+    font-size: 5.2rem;
+    font-weight: 700;
+    line-height: 6.3rem;
+    color: black;
+    letter-spacing: -0.25rem;
+
+    position: relative;
+    bottom: 7px;
+    right: 8px;
+}
+
+.plans__card__free--price span {
+    font-size: 1.2rem;
+    font-weight: 300;
+    vertical-align: 25px;
+}
+
+.plans__card__free h3 {
+    font-family: 'Inter', sans-serif;
+    color: #757575;
+    font-size: 1.2rem;
+    width: 158px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+    margin: 0 auto;
+    position: relative;
+}
+
+.plans__card__free--ca {
+    border: blue solid;
+    width: 150px;
+    height: 48px;
+    margin-top: 20px;
+    background-color: #faf8f7;
+    border: 2px solid #0000ff;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.8rem;
+    color: var(--black);
+
+}
+
+.plans__card__free--ca span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("./assets/icons/orange-right-arrow.svg");
+    filter: invert(8%) sepia(100%) saturate(7476%) hue-rotate(248deg) brightness(100%) contrast(143%);
+    
+    /* PONER EL TEXTO PEGADO ABAJO */
+    vertical-align: text-bottom;
+}
+
+footer {
+    /* Porque necesitamos que los 2 section vayan uno frente al otro */
+    min-width: 320px;
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: var(--bitcoin-orange);
+    justify-content: space-evenly; 
+    align-items: center;
+}
+
+footer section {
+    /* display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center; */
+}
+
+.footer__left ul {
+    font-size: 1.4rem;
+    font-weight: 500px;
+    line-height: 1.8rem;
+    /* Para quitar los puntitos de lista */
+    list-style: none;
+}
+
+.footer__left li {
+    margin: 10px;
+}
+
+.footer__left a {
+    color: var(--just-white);
+    text-decoration: none;
+}
